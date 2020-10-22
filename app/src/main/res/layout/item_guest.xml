@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginBottom="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    android:orientation="horizontal"
     tools:ignore="UseCompoundDrawables">
 
     <ImageView
+        android:id="@+id/image_guest_photo"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/image_guest_photo"
-        android:contentDescription="@string/desc_image_guest_photo"
         android:layout_marginEnd="16dp"
-        tools:src="@drawable/ic_launcher_background"
-        />
+        android:contentDescription="@string/desc_image_guest_photo"
+        tools:src="@drawable/ic_launcher_background" />
 
     <TextView
+        android:id="@+id/text_guest_name"
+        style="@style/Theme.SimplePartyScreen.textview_party.party_guest_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_guest_name"
         android:layout_gravity="center_vertical"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimaryText"
         tools:text="Инесса" />
 
 </LinearLayout>

@@ -1,110 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.EventFragment">
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/screen_event_info"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:id="@+id/image_party_logo"
-        android:contentDescription="@string/desc_image_party_logo"
-        tools:src="@drawable/ic_launcher_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ll_host_info"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_party_logo">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/image_host_photo"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center"
-            tools:src="@drawable/ic_launcher_background"
-            android:contentDescription="@string/desc_image_party_logo" />
+            android:id="@+id/image_party_logo"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/desc_image_party_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/ll_host_info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_party_logo">
 
-            <TextView
+            <ImageView
+                android:id="@+id/image_host_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/desc_image_party_logo"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_party_title"
-                android:textSize="24sp"
-                android:textColor="@color/colorPrimaryText"
-                tools:text="Именины"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_host_name"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="14sp"
-                tools:text="Пригласил(а): Кристина"/>
+                <TextView
+                    android:id="@+id/text_party_title"
+                    style="@style/Theme.SimplePartyScreen.textview_party.party_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Именины" />
+
+                <TextView
+                    android:id="@+id/text_host_name"
+                    style="@style/Theme.SimplePartyScreen.textview_party.party_host_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Пригласил(а): Кристина" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/label_guests_list"
+            style="@style/Theme.SimplePartyScreen.textview_party.party_label_guest_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/label_guests_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_host_info" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_guests_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_guests_list"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_guest" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/label_guests_list"
-        android:text="@string/label_guests_list"
-        android:textColor="@color/colorSecondaryText"
-        android:textSize="12sp"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@id/ll_host_info"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_height="0dp"
-        android:layout_width="match_parent"
-        android:id="@+id/rv_guests_list"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/label_guests_list"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_guest" />
-
-    <TextView
-        android:id="@+id/message"
+        android:id="@+id/label_no_data"
+        style="@style/Theme.SimplePartyScreen.textview_party.party_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="222dp"
+        android:layout_marginBottom="704dp"
         android:text="@string/no_data"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="invisible" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

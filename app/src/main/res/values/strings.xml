@@ -6,4 +6,7 @@
     <string name="label_guests_list">Will come</string>
     <string name="desc_image_guest_photo">Photo of the guest</string>
     <string name="text_you_was_invited">"Invite from: %1s"</string>
+    <string name="error_file_not_found">Error 1: File not found</string>
+    <string name="error_unknown">Error 0: Unknown Error</string>
+    <string name="error_wrong_file_format">Error 2: File parsing error</string>
 </resources>

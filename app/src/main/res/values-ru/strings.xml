@@ -2,9 +2,12 @@
 <resources>
     <string name="app_name">SimplePartyScreen</string>
     <string name="party">Вечеринка</string>
-    <string name="no_data">Нет данных</string>
+    <string name="no_data">Нет данных для показа</string>
     <string name="desc_image_party_logo">Логотип вечеринки</string>
     <string name="label_guests_list">С Вами придут</string>
     <string name="desc_image_guest_photo">Фото гостя</string>
     <string name="text_you_was_invited">Пригласил(а): %1s</string>
+    <string name="error_file_not_found">Ошибка 1: Файл не найден</string>
+    <string name="error_unknown">Ошибка 0: Неизвестная ошибка</string>
+    <string name="error_wrong_file_format">Ошибка 2: Ошибка получения данных из файла</string>
 </resources>
