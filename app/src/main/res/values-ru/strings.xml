@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SimplePartyScreen</string>
+    <string name="party">Вечеринка</string>
+    <string name="no_data">Нет данных</string>
+    <string name="desc_image_party_logo">Логотип вечеринки</string>
+    <string name="label_guests_list">С Вами придут</string>
+    <string name="desc_image_guest_photo">Фото гостя</string>
+    <string name="text_you_was_invited">Пригласил(а): %1s</string>
+</resources>

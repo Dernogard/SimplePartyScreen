@@ -2,4 +2,8 @@
     <string name="app_name">SimplePartyScreen</string>
     <string name="party">Party</string>
     <string name="no_data">No Data For Showing</string>
+    <string name="desc_image_party_logo">Logo of the party</string>
+    <string name="label_guests_list">Will come</string>
+    <string name="desc_image_guest_photo">Photo of the guest</string>
+    <string name="text_you_was_invited">"Invite from: %1s"</string>
 </resources>

@@ -7,8 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.distinctUntilChanged
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.event_fragment.*
 import ru.dernogard.simplepartyscreen.R
+import ru.dernogard.simplepartyscreen.model.Event
 
 internal class EventFragment : Fragment(R.layout.event_fragment) {
 
@@ -16,8 +20,13 @@ internal class EventFragment : Fragment(R.layout.event_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        changeAppBarTitle(R.string.party)
+        setupGuestRecyclerView()
         setupObservables()
+    }
+
+    private fun setupGuestRecyclerView() {
+        rv_guests_list.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        rv_guests_list.adapter = GuestsAdapter()
     }
 
     override fun onStart() {
@@ -27,28 +36,42 @@ internal class EventFragment : Fragment(R.layout.event_fragment) {
 
     private fun setupObservables() {
         mViewModel.eventLive.distinctUntilChanged().observe(viewLifecycleOwner){
-            if (it == null) {
-                changeNoDataLabelVisibility(true)
-            }
-            else {
-                changeNoDataLabelVisibility(false)
+            if (it != null) {
+                fillEventInfo(it)
             }
         }
     }
 
-    private fun changeNoDataLabelVisibility(isShow: Boolean) {
-        progress_bar.visibility = isShow.toViewVisibility()
-        message.visibility = isShow.toViewVisibility()
+    private fun fillEventInfo(event: Event) {
+        text_party_title.text = event.title
+        val hostNameText = getString(R.string.text_you_was_invited, event.host.name)
+        text_host_name.text = hostNameText
+        loadHostUserPhoto(event.host.avatarUrl)
+        loadPartyLogo(event.logoUrl)
+
+        if (rv_guests_list.adapter is GuestsAdapter) {
+            (rv_guests_list.adapter as GuestsAdapter).submitList(event.guests)
+        }
     }
 
-    private fun changeAppBarTitle(@StringRes titleId: Int) {
-        val title = resources.getString(titleId)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = title
+    private fun loadPartyLogo(src: String) {
+        Glide.with(requireContext())
+            .load(src)
+            .placeholder(R.drawable.not_found_image)
+            .error(R.drawable.not_found_image)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .centerCrop()
+            .into(image_party_logo)
     }
 
-}
+    private fun loadHostUserPhoto(src: String) {
+        Glide.with(requireContext())
+            .load(src)
+            .placeholder(R.drawable.empty_photo)
+            .error(R.drawable.empty_photo)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .circleCrop()
+            .into(image_host_photo)
+    }
 
-// show view if boolean is true
-private fun Boolean.toViewVisibility(): Int {
-    return if (this) View.VISIBLE else View.INVISIBLE
 }

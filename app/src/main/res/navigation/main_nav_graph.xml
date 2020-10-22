@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="ru.dernogard.simplepartyscreen.ui.main.EventFragment"
-        android:label=""
+        android:label="@string/party"
         tools:layout="@layout/event_fragment" />
 </navigation>
