@@ -20,7 +20,7 @@ object ImageHelper {
     fun loadPartyLogo(imageView: ImageView, src: String) {
         Glide.with(imageView.context)
             .load(src)
-            .placeholder(R.drawable.not_found_image)
+            .placeholder(R.drawable.waiting)
             .error(R.drawable.not_found_image)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .centerCrop()
